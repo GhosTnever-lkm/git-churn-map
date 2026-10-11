@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+<title id="title">Git Churn Map sample report</title><desc id="desc">A synthetic local report ranks files by line churn and warns that churn is only a review signal.</desc>
+<rect width="1120" height="620" rx="28" fill="#0b1120"/><rect x="26" y="26" width="1068" height="568" rx="18" fill="#111b2b" stroke="#2c3b50"/>
+<text x="68" y="92" fill="#a6f08a" font-family="monospace" font-size="18" letter-spacing="3">READ-ONLY · LOCAL GIT HISTORY</text><text x="68" y="145" fill="#eff6ff" font-family="Arial,sans-serif" font-size="34" font-weight="700">Git Churn Map</text>
+<text x="68" y="190" fill="#bac8da" font-family="monospace" font-size="16">$ git-churn-map . --limit 10 --format markdown</text>
+<rect x="68" y="222" width="984" height="285" rx="12" fill="#f7f9fc"/><text x="100" y="270" fill="#182333" font-family="Arial,sans-serif" font-size="22" font-weight="700">Top change hotspots · 4 commits</text>
+<g font-family="Arial,sans-serif" font-size="16" fill="#35445a"><text x="100" y="316">File</text><text x="630" y="316">Commits touched</text><text x="795" y="316">Added</text><text x="890" y="316">Deleted</text><text x="990" y="316">Churn</text></g>
+<g stroke="#d8e0ea"><path d="M96 329H1024M96 383H1024M96 437H1024M96 491H1024"/></g>
+<g font-family="monospace" font-size="15" fill="#182333"><text x="100" y="363">src/merge.py</text><text x="675" y="363">3</text><text x="820" y="363">47</text><text x="920" y="363">12</text><text x="995" y="363">59</text><text x="100" y="417">tests/test_merge.py</text><text x="675" y="417">2</text><text x="820" y="417">26</text><text x="920" y="417">4</text><text x="995" y="417">30</text><text x="100" y="471">README.md</text><text x="675" y="471">2</text><text x="820" y="471">18</text><text x="920" y="471">7</text><text x="995" y="471">25</text></g>
+<text x="68" y="548" fill="#ffd280" font-family="Arial,sans-serif" font-size="15">Synthetic sample · churn is a review signal, not a code-quality score · source contents are never included</text></svg>
