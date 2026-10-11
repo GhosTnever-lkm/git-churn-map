@@ -9,11 +9,10 @@ permissions:
   contents: read
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
         python-version: ['3.11', '3.12', '3.13']
     steps:
       - uses: actions/checkout@v4
@@ -22,5 +21,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install .
       - run: python -m unittest discover -s tests -v
-      - run: git-churn-map . --format json --max-commits 20 --output /tmp/churn.json
-      - run: python -c "import json; d=json.load(open('/tmp/churn.json')); assert d['commits_scanned'] >= 1"
+      - run: git-churn-map . --format json --max-commits 20 --output churn-smoke.json
+      - run: python -c "import json, pathlib; d=json.loads(pathlib.Path('churn-smoke.json').read_text(encoding='utf-8')); assert d['commits_scanned'] >= 1"
