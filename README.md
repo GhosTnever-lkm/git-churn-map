@@ -19,7 +19,7 @@
 Requires Python 3.11+ and Git installed and available on `PATH`.
 
 ```bash
-python -m pip install "git-churn-map @ git+https://github.com/GhosTnever-lkm/git-churn-map.git@v0.1.0"
+python -m pip install "git-churn-map @ git+https://github.com/GhosTnever-lkm/git-churn-map.git@v0.1.3"
 git-churn-map /path/to/repository --limit 15
 ```
 
@@ -76,7 +76,7 @@ python -m unittest discover -s tests -v
 python -m compileall -q src tests
 ```
 
-CI tests Python 3.11, 3.12, and 3.13. The tool uses the Python standard library at runtime.
+CI tests Python 3.11, 3.12, and 3.13 on Ubuntu and Windows. The tool uses the Python standard library at runtime.
 
 ## ☕ Support / Pro Version
 

@@ -4,8 +4,12 @@ import json
 from pathlib import Path
 import subprocess
 import tempfile
+import tomllib
 import unittest
+from contextlib import redirect_stdout
+from io import StringIO
 
+from git_churn_map import __version__
 from git_churn_map.core import Hotspot, collect_hotspots, parse_numstat_fields, to_json, to_markdown
 
 
@@ -31,6 +35,28 @@ class NumstatTests(unittest.TestCase):
         self.assertIn("&lt;img&gt;&#124;&#96;x&#96;\\nnext.py", report)
         self.assertNotIn("<img>", report)
         self.assertNotIn("\nnext.py", report)
+
+
+class MetadataTests(unittest.TestCase):
+    def test_package_cli_readme_and_changelog_versions_match(self):
+        root = Path(__file__).resolve().parents[1]
+        project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]
+        readme = (root / "README.md").read_text(encoding="utf-8")
+        changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8")
+
+        self.assertEqual(__version__, project["version"])
+        self.assertEqual(__version__, (root / "VERSION").read_text(encoding="utf-8").strip())
+        self.assertIn(f"git-churn-map.git@v{__version__}", readme)
+        self.assertTrue(changelog.startswith(f"# Changelog\n\n## {__version__} - "))
+
+    def test_cli_version_reports_package_version(self):
+        from git_churn_map.cli import main
+
+        output = StringIO()
+        with redirect_stdout(output), self.assertRaises(SystemExit) as exit_info:
+            main(["--version"])
+        self.assertEqual(0, exit_info.exception.code)
+        self.assertEqual(f"git-churn-map {__version__}\n", output.getvalue())
 
     def test_json_is_valid_and_deterministic(self):
         rows = [Hotspot("src/a.py", 2, 3, 1)]

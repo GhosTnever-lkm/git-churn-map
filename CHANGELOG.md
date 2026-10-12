@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 - 2026-10-12
+
+- Synchronize the CLI version with package metadata and the v0.1.3 release.
+- Correct the installation pin and add regression tests for version metadata.
+- Run the Python test matrix on both Ubuntu and Windows.
+
 ## 0.1.2 - 2026-10-11
 
 - Fix the CI smoke step on Windows: write the JSON report to a workspace file instead of `/tmp`, which does not exist on Windows runners.
